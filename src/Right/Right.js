@@ -76,8 +76,8 @@ class Timer extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			min:0,
-			sec:10,
+			min:3,
+			sec:0,
 			interval : setInterval(this.clock,1000)
 		}
 		// var interval = setInterval(this.clock,1000);
