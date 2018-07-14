@@ -1,0 +1,63 @@
+#left, #right {
+  text-align: center;
+  height: 600px;
+  background-color: #f2f2f2;
+  float: left;
+  flex-grow: 2;
+  margin-top: 6px;
+  border-style: ridge;
+  margin-left:5px;
+
+}
+.main {
+width:100%;
+display:flex;
+
+}
+
+#tried, #word-match, #position-match {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+  height: 587px;
+  background-color: #f2f2f4;
+  border-style:ridge;
+  margin-left: 10px;
+}
+#root {
+    background-color: #f4f4f4;
+    display:flex;
+
+}
+
+#input {
+   margin-top: 20%;
+   margin-bottom: 0%;
+}
+
+#timer {
+
+    background-color: grey ;
+    border: 2px solid grey;
+    border-radius: 12px; /* one half of ( (border * 2) + height + padding ) */
+    box-shadow: 1px 1px 1px black;
+    color: white;
+    font: bold 15px/13px Helvetica, Verdana, Tahoma;
+    height: 16px;
+    min-width: 14px;
+    padding: 4px 3px 0 3px;
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+#button {
+  margin-top: 5%;
+}
+
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
