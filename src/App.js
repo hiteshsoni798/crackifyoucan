@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Left from '/home/soni/Music/React/my-app/src/Left/Left';
+import Left from '/home/soni/Music/React/my-app/src/Dashboard/Left';
 import Right from '/home/soni/Music/React/my-app/src/Right/Right';
 import Success from '/home/soni/Music/React/my-app/src/Success';
+import Fail from '/home/soni/Music/React/my-app/src/fail';
 
 class App extends Component {
   constructor(props) {
@@ -15,9 +15,12 @@ class App extends Component {
       pos_match:[],
       char_match:[],
       total_tried:0,
-      result : 'pass'
+      state : 'continue'
     };
     console.log(this.state.password);
+  }
+  fail = () => {
+    this.setState({state:'fail'});
   }
 
   createPassword =()=> {
@@ -27,6 +30,9 @@ class App extends Component {
   }
 
   handle_password = (val) => {
+    if(val == this.state.password) {
+      this.setState({state : 'success'});
+    }
     this.setState({total_tried:this.state.total_tried+1});
     this.setState({value:val});
     const a = this.state.tried;
@@ -35,7 +41,7 @@ class App extends Component {
     a.push(val);
     b.push(this.position_match(val));
     c.push(this.charrecter_match(val));
-  //  console.log(a);
+
       this.setState({
         tried:a,
         pos_match:b,
@@ -72,13 +78,7 @@ replaceAt = (index , password) => {
   }
 
   render() {
-     var cond;
-    if(this.state.value == this.state.password) {
-      cond= true;
-    } else {
-      cond=false;
-    }
-    if(!cond) {
+    if(this.state.state=='continue') {
         return (
           <div className = "main" >
             <Left
@@ -90,15 +90,22 @@ replaceAt = (index , password) => {
               s={this.state.value}
               actual_password={this.state.password}
               handle_password = {this.handle_password}
+              fail = {this.fail}
             />
           </div>
         );
       }
-    else {
+    else if(this.state.state=='success')
+    {
       return (
         <div>
         <Success Tried={this.state.total_tried}/>
         </div>
+      );
+    }
+    else {
+      return (
+        <Fail/>
       );
     }
   }
